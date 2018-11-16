@@ -10,33 +10,23 @@ steps:
     versionSpec: 3.6
     architecture: 'x64'
 
-- displayName: 'Setup Environment'
-  script: |
-      ls -ltrha && pip install --upgrade pip setuptools wheel
+- script: |
+    ls -ltrha && pip install --upgrade pip setuptools wheel
 
-- task: PythonScript@0
-  displayName: 'Test Integration Package'
-  inputs:
-    scriptSource: 'inline'
-    script: |
-      cd ./IntegrationPackage
-      python -m unittest discover
-      cd ../
+- script: |
+    cd ./IntegrationPackage
+    python -m unittest discover
+    cd ../
 
-- task: PythonScript@0
-  displayName: 'Package Integration'
-  inputs:
-    scriptSource: 'inline'
-    script: |
-      cd ./IntegrationPackage
-      python integration_setup.py sdist bdist_wheel
-      cd ../
+- script: |
+    cd ./IntegrationPackage
+    python integration_setup.py sdist bdist_wheel
+    cd ../
 
 - script: |
     cd ./IntegrationPackage
     pip install dist/Integration-*3*.whl
     cd ../
-  displayName: 'Install Integration Locally'
 
 - script: |
     pip list
