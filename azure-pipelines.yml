@@ -15,8 +15,7 @@ steps:
   inputs:
     scriptSource: 'inline'
     script: |
-      ls -ltrha
-      pip install --upgrade pip setuptools wheel
+      ls -ltrha && pip install --upgrade pip setuptools wheel
 
 - task: PythonScript@0
   displayName: 'Test Integration Package'
