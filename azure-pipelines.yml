@@ -15,26 +15,26 @@ steps:
   inputs:
     scriptSource: 'inline'
     script: |
-    ls -ltrha
-    python -m pip install --upgrade pip setuptools wheel
+      ls -ltrha
+      python -m pip install --upgrade pip setuptools wheel
 
 - task: PythonScript@0
   displayName: 'Test Integration Package'
   inputs:
     scriptSource: 'inline'
     script: |
-    cd ./IntegrationPackage
-    python -m unittest discover
-    cd ../
+      cd ./IntegrationPackage
+      python -m unittest discover
+      cd ../
 
 - task: PythonScript@0
   displayName: 'Package Integration'
   inputs:
     scriptSource: 'inline'
     script: |
-    cd ./IntegrationPackage
-    python integration_setup.py sdist bdist_wheel
-    cd ../
+      cd ./IntegrationPackage
+      python integration_setup.py sdist bdist_wheel
+      cd ../
 
 - script: |
     cd ./IntegrationPackage
