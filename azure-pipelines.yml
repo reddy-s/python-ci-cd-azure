@@ -16,7 +16,7 @@ steps:
     scriptSource: 'inline'
     script: |
       ls -ltrha
-      python -m pip install --upgrade pip setuptools wheel
+      pip install --upgrade pip setuptools wheel
 
 - task: PythonScript@0
   displayName: 'Test Integration Package'
@@ -38,7 +38,7 @@ steps:
 
 - script: |
     cd ./IntegrationPackage
-    python -m pip install dist/Integration-*3*.whl
+    pip install dist/Integration-*3*.whl
     cd ../
   displayName: 'Install Integration Locally'
 
