@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='Wrapper',
-    version='',
+    version='1.0.0',
     description='Wrapper',
     packages=find_packages(),
     install_requires=[],
