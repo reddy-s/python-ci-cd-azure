@@ -7,14 +7,11 @@ variables:
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: 3.5
+    versionSpec: 3.6
     architecture: 'x64'
 
-- task: PythonScript@0
-  displayName: 'Setup Environment'
-  inputs:
-    scriptSource: 'inline'
-    script: |
+- displayName: 'Setup Environment'
+  script: |
       ls -ltrha && pip install --upgrade pip setuptools wheel
 
 - task: PythonScript@0
