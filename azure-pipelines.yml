@@ -61,9 +61,6 @@ steps:
     pswd: $(dockerPassword)
   displayName: 'Push Docker image'
 
-
-
-
 - script: |
     pip list
   displayName: 'Verification'
