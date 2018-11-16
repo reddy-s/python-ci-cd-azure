@@ -11,12 +11,12 @@ steps:
     architecture: 'x64'
 
 - script: |
-    ls -ltrha && pip install --upgrade pip setuptools wheel
+    ls -ltrha && pip install --upgrade pip setuptools wheel unittest-xml-reporting
   displayName: 'Environment Preperation'
 
 - script: |
     cd ./IntegrationPackage
-    python -m unittest discover
+    python -m xmlrunner discover
     cd ../
   displayName: 'Testing Integration Package'
 
@@ -34,7 +34,7 @@ steps:
 
 - script: |
     cd ./WrapperPackage
-    python -m unittest discover
+    python -m xmlrunner discover
     cd ../
   displayName: 'Testing Wrapper Package'
 
@@ -44,9 +44,25 @@ steps:
     cd ../
   displayName: 'Packaging Wrapper'
 
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: "**/TEST-*.xml"
+    testRunTitle: 'Python $(PYTHON_VERSION)'
+
 - script: |
-    docker build -t $(imageName) .
-  displayName: 'Build Image'
+    docker build -t $(dockerId)/$(imageName) .
+  displayName: 'Build Docker image'
+
+- script: |
+    docker login -u $(dockerId) -p $pswd
+    docker push $(dockerId)/$(imageName)
+  condition: and(eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  env:
+    pswd: $(dockerPassword)
+  displayName: 'Push Docker image'
+
+
+
 
 - script: |
     pip list

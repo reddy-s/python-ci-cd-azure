@@ -114,3 +114,6 @@ dmypy.json
 
 .vscode/
 .idea/
+
+# Imgnore test results
+**/*.xml
