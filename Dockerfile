@@ -12,8 +12,8 @@ COPY ./WrapperPackage/run.py /workspace/run.py
 RUN pip install --no-cache-dir /workspace/Integration-*3*.whl && \
     pip install --no-cache-dir /workspace/Wrapper-*3*.whl && \
     chmod +x /workspace/run.py && \
-    echo '#!/bin/bash\n python /workspace/run.py "$@"' > /usr/bin/python_ci_cd_azure && \
+    echo -e '#!/bin/sh\npython /workspace/run.py "$@"' >> /usr/bin/python_ci_cd_azure && \
     chmod +x /usr/bin/python_ci_cd_azure && \
     rm -rf /workspace/*.whl
 
-cmd ["python_ci_cd_azure", "inner"]
+CMD ["python_ci_cd_azure", "inner"]
