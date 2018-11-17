@@ -6,7 +6,7 @@ This repo gives a guideline on how to use Azure Team services to implement a CI/
 
 ## Packages
 
-This project has two package which are `IntegrationDemo` and `Wrapper`. Here the `Wrapper` package depends on the `IntegrationDemo` package.
+This project has two package which are `Integration` and `Wrapper`. Here the `Wrapper` package depends on the `Integration` package.
 
 * Uses python 3.6
 
