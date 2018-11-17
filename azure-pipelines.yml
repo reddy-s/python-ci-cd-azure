@@ -75,13 +75,13 @@ steps:
     docker push $(dockerId)/$(imageName):$(major).$(minor).$(patch)
     docker tag $(dockerId)/$(imageName):$(major).$(minor).$(patch) $(dockerId)/$(imageName):latest
     docker push $(dockerId)/$(imageName):latest
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master') # runs only on master branch
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   env:
     pswd: $(dockerPassword)
   displayName: 'Push Docker image'
 
 - script: |
-    git tag -a $(major).$(minor).$(patch) -m "Version $(major).$(minor).$(patch)"
+    git tag -a $(major).$(minor).$(patch) -m " v$(major).$(minor).$(patch)"
     git push origin $(major).$(minor).$(patch)
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   displayName: 'Tagging the build'
