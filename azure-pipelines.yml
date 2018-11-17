@@ -15,7 +15,7 @@ steps:
     architecture: 'x64'
 
 - script: |
-    git config --global credential.helper cache && pip install --upgrade pip setuptools wheel unittest-xml-reporting
+    pip install --upgrade pip setuptools wheel unittest-xml-reporting
   displayName: 'Environment Preperation'
 
 - script: |
