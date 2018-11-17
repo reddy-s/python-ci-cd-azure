@@ -1,6 +1,7 @@
 import unittest
 
 from Wrapper.wrap import Wrapper
+from .commons import Common
 
 
 class TestPythonIntegrator(unittest.TestCase):
@@ -20,3 +21,6 @@ class TestPythonIntegrator(unittest.TestCase):
   def test_call_integration_package(self):
     self.assertEqual(self.wrapper.call_integration_package(), self.stringOutputChild)
 
+
+if __name__ == '__main__':
+  unittest.main()

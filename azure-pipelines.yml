@@ -38,6 +38,7 @@ steps:
   displayName: 'Environment Preperation'
 
 - script: |
+    set -e
     cd ./IntegrationPackage
     python -m xmlrunner discover
     cd ../
@@ -45,6 +46,7 @@ steps:
   displayName: 'Testing Integration Package'
 
 - script: |
+    set -e
     cd ./IntegrationPackage
     python integration_setup.py sdist bdist_wheel
     cd ../
@@ -58,6 +60,7 @@ steps:
   displayName: 'Installing Integration Package'
 
 - script: |
+    set -e
     cd ./WrapperPackage
     python -m xmlrunner discover
     cd ../
@@ -65,6 +68,7 @@ steps:
   displayName: 'Testing Wrapper Package'
 
 - script: |
+    set -e
     cd ./WrapperPackage
     python wrapper_setup.py sdist bdist_wheel
     cd ../
