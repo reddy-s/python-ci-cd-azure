@@ -53,3 +53,9 @@ OK
 $ cd ./WrapperPackage
 $ python wrapper_setup.py sdist bdist_wheel
 ```
+
+### Run the container
+
+```sh
+docker run --rm --name python-ci-cd-azure reddys310/python-ci-cd-azure:latest
+```
