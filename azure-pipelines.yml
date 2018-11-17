@@ -75,7 +75,7 @@ steps:
     docker push $(dockerId)/$(imageName):$(major).$(minor).$(patch)
     docker tag $(dockerId)/$(imageName):$(major).$(minor).$(patch) $(dockerId)/$(imageName):latest
     docker push $(dockerId)/$(imageName):latest
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master') # runs only on master branch
   env:
     pswd: $(dockerPassword)
   displayName: 'Push Docker image'
