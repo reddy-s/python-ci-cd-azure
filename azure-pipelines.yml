@@ -11,6 +11,12 @@ trigger:
     - development
     - feature/*
 
+pr:
+  branches:
+    include:
+    - master
+    - development
+
 variables:
   imageName: 'python-ci-cd-azure'
   major: 1
@@ -21,6 +27,10 @@ steps:
 
 - checkout: self
   persistCredentials: true
+
+- script: |
+    git checkout -b $(Build.SourceBranchName)
+  displayName: 'Checkout branch'
 
 - task: UsePythonVersion@0
   inputs:
