@@ -1,13 +1,13 @@
 import unittest
 
 from Integration.integrator import PythonIntegrator
-from .commons import Common
+
 
 class TestPythonIntegrator(unittest.TestCase):
 
   @classmethod
   def setUpClass(cls):
-    cls.stringOutput = "This information is coming form: 'Python Integrator package'"
+    cls.stringOutput = "This information is coming form: 'Python Integrator package:1.0.0'"
 
   def test_integrator_repo(self):
     integrator = PythonIntegrator()

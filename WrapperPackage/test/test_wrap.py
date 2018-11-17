@@ -1,7 +1,6 @@
 import unittest
 
 from Wrapper.wrap import Wrapper
-from .commons import Common
 
 
 class TestPythonIntegrator(unittest.TestCase):
@@ -9,7 +8,7 @@ class TestPythonIntegrator(unittest.TestCase):
   @classmethod
   def setUpClass(cls):
     cls.stringOutput = "This information is coming form: 'Wrapper package'"
-    cls.stringOutputChild = "This information is coming form: 'Python Integrator package'"
+    cls.stringOutputChild = "This information is coming form: 'Python Integrator package:1.0.0'"
 
   @classmethod
   def setUp(self):
