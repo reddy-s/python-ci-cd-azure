@@ -34,7 +34,7 @@ steps:
     architecture: 'x64'
 
 - script: |
-    pip install --upgrade pip setuptools wheel unittest-xml-reporting && cat azure-pipeline.yml
+    pip install --upgrade pip setuptools wheel unittest-xml-reporting && cat azure-pipelines.yml
   displayName: 'Environment Preperation'
 
 - script: |
