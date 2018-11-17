@@ -21,7 +21,7 @@ variables:
   imageName: 'python-ci-cd-azure'
   major: 1
   minor: 1
-  patch: 0 # $(Build.BuildId)
+  patch: 1 # $(Build.BuildId)
 
 steps:
 
