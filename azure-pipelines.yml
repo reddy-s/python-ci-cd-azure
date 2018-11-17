@@ -2,6 +2,15 @@ name: $(Date:yyyyMMdd).$(Rev:.r)
 
 pool:
   vmImage: 'Ubuntu 16.04'
+
+trigger:
+  # batch: true
+  branches:
+    include:
+    - master
+    - development
+    - feature/*
+
 variables:
   imageName: 'python-ci-cd-azure'
   major: 1
