@@ -7,7 +7,7 @@ class TestPythonIntegrator(unittest.TestCase):
 
   @classmethod
   def setUpClass(cls):
-    cls.stringOutput = "This information is coming form: 'Wrapper package'"
+    cls.stringOutput = "This information is coming form: 'Wrapper package 1.0.0'"
     cls.stringOutputChild = "This information is coming form: 'Python Integrator package:1.0.0'"
 
   @classmethod
