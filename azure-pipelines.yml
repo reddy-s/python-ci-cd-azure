@@ -41,14 +41,14 @@ steps:
     cd ./IntegrationPackage
     python -m xmlrunner discover
     cd ../
-  condition: succeededOrFailed()
+  condition: succeeded()
   displayName: 'Testing Integration Package'
 
 - script: |
     cd ./IntegrationPackage
     python integration_setup.py sdist bdist_wheel
     cd ../
-  condition: succeededOrFailed()
+  condition: succeeded()
   displayName: 'Packaging Integration'
 
 - script: |
@@ -61,14 +61,14 @@ steps:
     cd ./WrapperPackage
     python -m xmlrunner discover
     cd ../
-  condition: succeededOrFailed()
+  condition: succeeded()
   displayName: 'Testing Wrapper Package'
 
 - script: |
     cd ./WrapperPackage
     python wrapper_setup.py sdist bdist_wheel
     cd ../
-  condition: succeededOrFailed()
+  condition: succeeded()
   displayName: 'Packaging Wrapper'
 
 - task: PublishTestResults@2
