@@ -5,8 +5,8 @@ pool:
 variables:
   imageName: 'python-ci-cd-azure'
   major: 1
-  minor: 0
-  patch: 1 # $(Build.BuildId)
+  minor: 1
+  patch: 0 # $(Build.BuildId)
 
 steps:
 - task: UsePythonVersion@0
@@ -68,7 +68,7 @@ steps:
   displayName: 'Push Docker image'
 
 - script: |
-    tag -a $(major).$(minor).$(patch) -m "Version $(major).$(minor).$(patch)"
+    git tag -a $(major).$(minor).$(patch) -m "Version $(major).$(minor).$(patch)"
     git push origin $(major).$(minor).$(patch)
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   displayName: 'Tagging the build'
