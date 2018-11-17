@@ -9,6 +9,10 @@ variables:
   patch: 0 # $(Build.BuildId)
 
 steps:
+
+- checkout: self
+  persistCredentials: true
+
 - task: UsePythonVersion@0
   inputs:
     versionSpec: 3.6
@@ -66,6 +70,9 @@ steps:
   env:
     pswd: $(dockerPassword)
   displayName: 'Push Docker image'
+
+- checkout: self
+  clean: true
 
 - script: |
     git tag -a $(major).$(minor).$(patch) -m "Version $(major).$(minor).$(patch)"
