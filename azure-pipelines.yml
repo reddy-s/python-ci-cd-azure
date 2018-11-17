@@ -1,8 +1,12 @@
+name: python-ci-cd-azure:$(Date:yyyyMMdd).$(Rev:.r)
+
 pool:
   vmImage: 'Ubuntu 16.04'
-
 variables:
   imageName: 'python-ci-cd-azure'
+  major: 1
+  minor: 0
+  patch: $(Build.BuildId)
 
 steps:
 - task: UsePythonVersion@0
@@ -50,13 +54,13 @@ steps:
     testRunTitle: 'Python $(PYTHON_VERSION)'
 
 - script: |
-    docker build -t $(dockerId)/$(imageName):$(Build.BuildId) .
+    docker build -t $(dockerId)/$(imageName):$(major).$(minor).$(patch) .
   displayName: 'Build Docker image'
 
 - script: |
     docker login -u $(dockerId) -p $pswd
-    docker push $(dockerId)/$(imageName):$(Build.BuildId)
-    docker tag $(dockerId)/$(imageName):$(Build.BuildId) $(dockerId)/$(imageName):latest
+    docker push $(dockerId)/$(imageName):$(major).$(minor).$(patch)
+    docker tag $(dockerId)/$(imageName):$(major).$(minor).$(patch) $(dockerId)/$(imageName):latest
     docker push $(dockerId)/$(imageName):latest
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   env:
