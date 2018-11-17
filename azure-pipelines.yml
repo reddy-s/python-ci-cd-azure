@@ -80,9 +80,6 @@ steps:
     pswd: $(dockerPassword)
   displayName: 'Push Docker image'
 
-- checkout: self
-  clean: true
-
 - script: |
     git tag -a $(major).$(minor).$(patch) -m "Version $(major).$(minor).$(patch)"
     git push origin $(major).$(minor).$(patch)
