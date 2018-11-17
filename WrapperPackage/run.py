@@ -14,7 +14,7 @@ def run(operation):
     print('[INFO] {0}'.format(wrapper.sample_wrapper_repo()))
 
 if __name__ == "__main__":
-  print("[INFO] Running Validation")
+  print("[INFO] Running Validation on input")
   if len(sys.argv) != 2:
     raise ValueError('[ERROR] Not enough arguments. Use "python run.py inner" or "python run.py outer"')
   if sys.argv[1].upper() not in [INNER, OUTER]:
