@@ -11,11 +11,17 @@ trigger:
     - development
     - feature/*
 
+pr:
+  branches:
+    include:
+    - master
+    - development
+
 variables:
   imageName: 'python-ci-cd-azure'
   major: 1
   minor: 1
-  patch: 0 # $(Build.BuildId)
+  patch: 1 # $(Build.BuildId)
 
 steps:
 
@@ -28,19 +34,23 @@ steps:
     architecture: 'x64'
 
 - script: |
-    pip install --upgrade pip setuptools wheel unittest-xml-reporting
+    pip install --upgrade pip setuptools wheel unittest-xml-reporting && cat azure-pipelines.yml
   displayName: 'Environment Preperation'
 
 - script: |
+    set -e
     cd ./IntegrationPackage
     python -m xmlrunner discover
     cd ../
+  condition: succeeded()
   displayName: 'Testing Integration Package'
 
 - script: |
+    set -e
     cd ./IntegrationPackage
     python integration_setup.py sdist bdist_wheel
     cd ../
+  condition: succeeded()
   displayName: 'Packaging Integration'
 
 - script: |
@@ -50,15 +60,19 @@ steps:
   displayName: 'Installing Integration Package'
 
 - script: |
+    set -e
     cd ./WrapperPackage
     python -m xmlrunner discover
     cd ../
+  condition: succeeded()
   displayName: 'Testing Wrapper Package'
 
 - script: |
+    set -e
     cd ./WrapperPackage
     python wrapper_setup.py sdist bdist_wheel
     cd ../
+  condition: succeeded()
   displayName: 'Packaging Wrapper'
 
 - task: PublishTestResults@2
