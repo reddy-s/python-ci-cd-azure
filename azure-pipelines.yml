@@ -82,6 +82,8 @@ steps:
 
 - script: |
     git tag -a $(major).$(minor).$(patch) -m " v$(major).$(minor).$(patch)"
+    git config --global user.email "reddy.horcrux@gmail.com"
+    git config --global user.name "Sangram Reddy"
     git push origin $(major).$(minor).$(patch)
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   displayName: 'Tagging the build'
