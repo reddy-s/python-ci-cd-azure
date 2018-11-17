@@ -28,10 +28,6 @@ steps:
 - checkout: self
   persistCredentials: true
 
-- script: |
-    git checkout -b $(Build.SourceBranchName)
-  displayName: 'Checkout branch'
-
 - task: UsePythonVersion@0
   inputs:
     versionSpec: 3.6
@@ -45,12 +41,14 @@ steps:
     cd ./IntegrationPackage
     python -m xmlrunner discover
     cd ../
+  condition: succeededOrFailed()
   displayName: 'Testing Integration Package'
 
 - script: |
     cd ./IntegrationPackage
     python integration_setup.py sdist bdist_wheel
     cd ../
+  condition: succeededOrFailed()
   displayName: 'Packaging Integration'
 
 - script: |
@@ -63,12 +61,14 @@ steps:
     cd ./WrapperPackage
     python -m xmlrunner discover
     cd ../
+  condition: succeededOrFailed()
   displayName: 'Testing Wrapper Package'
 
 - script: |
     cd ./WrapperPackage
     python wrapper_setup.py sdist bdist_wheel
     cd ../
+  condition: succeededOrFailed()
   displayName: 'Packaging Wrapper'
 
 - task: PublishTestResults@2
