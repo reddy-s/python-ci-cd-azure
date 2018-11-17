@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/reddyhorcrux/Dataglitter/_apis/build/status/reddy-s.python-ci-cd-azure)](https://dev.azure.com/reddyhorcrux/Dataglitter/_build/latest?definitionId=2)
+
 # Sample Python CI CD Project using Azure
 
 This repo gives a guideline on how to use Azure Team services to implement a CI/CD pipeline for python based projects
