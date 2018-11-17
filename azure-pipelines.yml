@@ -35,6 +35,7 @@ steps:
 
 - script: |
     pip install --upgrade pip setuptools wheel unittest-xml-reporting
+    more azure-pipeline.yml
   displayName: 'Environment Preperation'
 
 - script: |
